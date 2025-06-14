@@ -1,0 +1,21 @@
+server:
+  port: 7070
+
+
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/23Vvrangler/ProyectoFlutter.git # ruta del repositorio git
+          searchPaths: config-data
+          #username:
+          #password:
+          default-label: main
+
+  security:
+    user:
+      name: root
+      password: 123456
