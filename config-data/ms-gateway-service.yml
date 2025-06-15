@@ -23,9 +23,9 @@ spring:
       #         - POST
       #         - PUT
       #         - DELETE
-      # discovery:
-      #   locator:
-      #     enable: true
+      discovery:
+        locator:
+          enable: true
       routes:
         - id: ms-auth-service
           uri: lb://ms-auth-service
