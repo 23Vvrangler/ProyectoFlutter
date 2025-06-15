@@ -23,19 +23,19 @@ public class AuthUser {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String userName;
+    private String userName; // Nombre de usuario, debe ser único
 
-    private String password;
+    private String password; // Contraseña del usuario, debe ser almacenada de forma segura (ej. encriptada)
 
-    private String email;
+    private String email; // Correo electrónico del usuario
 
-    private Instant createdAt;
+    private Instant createdAt; // Fecha de creación del usuario
 
-    private Instant updatedAt;
+    private Instant updatedAt; // Fecha de actualización del usuario
 
-    private Boolean enabled;
+    private Boolean enabled; // Indica si el usuario está habilitado
 
-    private Boolean accountLocked;
+    private Boolean accountLocked; // Indica si la cuenta está bloqueada
 
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "authUser"})
     @OneToOne(mappedBy = "authUser", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
@@ -51,7 +51,7 @@ public class AuthUser {
     )
     @Builder.Default
     @ToString.Exclude
-    private Set<Role> roles = new HashSet<>();
+    private Set<Role> roles = new HashSet<>(); // Colección de roles asociados al usuario
 
     @PrePersist
     protected void onCreate() {

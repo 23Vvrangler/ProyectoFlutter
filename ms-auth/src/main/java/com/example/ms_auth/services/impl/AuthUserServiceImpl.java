@@ -14,12 +14,6 @@ import com.example.ms_auth.repository.AuthRepository;
 import com.example.ms_auth.security.JwtProvider;
 import com.example.ms_auth.services.AuthUserService;
 
-// Se eliminan las importaciones de excepciones personalizadas
-// import com.example.ms_auth.exceptions.UserAlreadyExistsException;
-// import com.example.ms_auth.exceptions.InvalidCredentialsException;
-// import com.example.ms_auth.exceptions.InvalidTokenException;
-// import com.example.ms_auth.exceptions.UserNotFoundException;
-// import io.jsonwebtoken.JwtException; // Ya no es necesario si no se capturan directamente aquí
 
 @Service
 public class AuthUserServiceImpl implements AuthUserService {
