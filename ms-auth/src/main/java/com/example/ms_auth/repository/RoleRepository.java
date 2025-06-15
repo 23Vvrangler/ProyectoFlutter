@@ -9,5 +9,5 @@ import com.example.ms_auth.entity.Role;
 
 @Repository
 public interface RoleRepository extends JpaRepository<Role, Integer> {
-    Optional<Role> findByName(String rolName);
+    Optional<Role> findByName(String roleName);
 }
