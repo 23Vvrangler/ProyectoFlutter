@@ -8,7 +8,8 @@
             "mainClass": "com.example.msconfigserver.MsConfigServerApplication",
             "projectName": "ms-config-server",
             "args": "",
-            "envFile": "${workspaceFolder}/.env"
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=40043 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=ms-config-server"
         },
         {
             "type": "java",
@@ -18,7 +19,8 @@
             "mainClass": "com.example.msregistryserver.MsRegistryServerApplication",
             "projectName": "ms-registry-server",
             "args": "",
-            "envFile": "${workspaceFolder}/.env"
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=42765 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=ms-registry-server"
         },
         {
             "type": "java",
@@ -27,6 +29,17 @@
             "cwd": "${workspaceFolder}",
             "mainClass": "com.example.msgatewayserver.MsGatewayServerApplication",
             "projectName": "ms-gateway-server",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=35833 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=ms-gateway-server"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-MsAuthApplication<auth-service>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.example.ms_auth.MsAuthApplication",
+            "projectName": "auth-service",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
         }
