@@ -13,7 +13,7 @@ import com.example.ms_auth.services.UserProfileService;
 @Service
 public class UserProfileServiceImpl implements UserProfileService {
     @Autowired
-    UserProfileRepository userProfileRepository;
+    private UserProfileRepository userProfileRepository;
     @Override
     public List<UserProfile> listar() {
         return userProfileRepository.findAll();

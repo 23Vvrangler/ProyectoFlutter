@@ -37,8 +37,6 @@ public class UserProfile {
 
     private String phoneNumber;
 
-    private String address;
-
     private String profilePictureUrl;
 
     private Instant createdAt;

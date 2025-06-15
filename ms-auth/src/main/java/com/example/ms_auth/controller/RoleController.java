@@ -16,7 +16,7 @@ import com.example.ms_auth.services.RoleService;
 @RequestMapping("/role")
 public class RoleController {
     @Autowired
-    RoleService roleService;
+    private RoleService roleService;
 
     @GetMapping("/list")
     ResponseEntity<List<Role>> listar() {

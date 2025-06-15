@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RequestMapping("/user-profile")
 public class UserProfileController {
     @Autowired
-    UserProfileService userProfileService;
+    private UserProfileService userProfileService;
 
     @GetMapping("/list")
     ResponseEntity<List<UserProfile>> listar(){
