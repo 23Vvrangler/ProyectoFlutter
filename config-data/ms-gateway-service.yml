@@ -5,23 +5,55 @@ server:
 eureka:
   client:
     serviceUrl:
+      #defaultZone: http://localhost:8090/eureka
       defaultZone: ${EUREKA_URI:http://localhost:8090/eureka}
   instance:
+    #hostname: localhost
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
 spring:
   cloud:
     gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "http://localhost:5173"
+            allowedHeaders: "*"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
       discovery:
         locator:
           enable: true
       routes:
+        - id: ms-gestionestudiantes-service
+          uri: lb://ms-gestionestudiantes-service
+          predicates:
+            - Path=/estudiante/**
+          filters:
+            - AuthFilter
         - id: ms-auth-service
           uri: lb://ms-auth-service
           predicates:
-            - Path=/auth/**, /user-profile/**, /role/**
-
-
-
-        
-          # filters:
-          #   - AuthFilter
+            - Path=/auth/**
+        - id: ms-gestionempresa-service
+          uri: lb://ms-gestionempresa-service
+          predicates:
+            - Path=/empresa/**
+        - id : ms-gestionoferta-service
+          uri: lb://ms-gestionoferta-service
+          predicates:
+            - Path=/oferta/**
+        - id: ms-gestionpostulacion-service
+          uri: lb://ms-gestionpostulacion-service
+          predicates:
+            - Path=/postulacion/**
+        - id: ms-gestionnotificacion-service
+          uri: lb://ms-gestionnotificacion-service
+          predicates: 
+            - Path=/notificacion/**
+        - id : ms-gestionseguimiento-service
+          uri: lb://ms-gestionseguimiento-service
+          predicates:
+            - Path=/seguimiento/**

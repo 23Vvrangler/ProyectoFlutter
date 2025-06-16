@@ -1,35 +1,27 @@
 server:
+
   port: ${PORT:${SERVERS_PORT:0}}
-springdoc:
-  api-docs:
-    enabled: true
-  swagger-ui:
-    enabled: true
-    path: /doc/swagger-ui.html
+
 
 spring:
-  application:
-    name: ms-auth-service
-  config:
-    import: optional:configserver:http://root:123456@localhost:7070
   jpa:
     hibernate.ddl-auto: update
     generate-ddl: true
     show-sql: true
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/auth-user
+    url: jdbc:mysql://localhost:3306/gt-auth
     username: root
-    password: Sasha24!
+    password:
 
 
 eureka:
   client:
     serviceUrl:
+
       defaultZone: ${EUREKA_URI:http://localhost:8090/eureka}
   instance:
-    instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${eureka.instance.nonSecurePort}
-    non-secure-port: ${server.port} # Esto le dice a Eureka qué puerto usar para el registro
-    prefer-ip-address: true # Sigue siendo una buena práctica
+
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
 jwt:
   secret: secret
