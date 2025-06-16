@@ -42,21 +42,44 @@ public class AuthUserServiceImpl implements AuthUserService {
     public TokenDto login(AuthUserDto authUserDto) {
         Optional<AuthUser> user = authRepository.findByUserName(authUserDto.getUserName());
         if (!user.isPresent())
-            return null;
-        if (passwordEncoder.matches(authUserDto.getPassword(), user.get().getPassword()))
-            return new TokenDto(jwtProvider.createToken(user.get()));
-        return null;
+            return null; // Usuario no encontrado
+        
+        // Verifica si la contraseña proporcionada coincide con la almacenada (codificada)
+        if (passwordEncoder.matches(authUserDto.getPassword(), user.get().getPassword())) {
+            // Si las credenciales son válidas, crea un token JWT
+            String generatedToken = jwtProvider.createToken(user.get());
+            
+            // Devuelve un nuevo TokenDto que contiene SOLAMENTE el token
+            return new TokenDto(generatedToken);
+        }
+        return null; // Contraseña incorrecta
     }
 
     @Override
     public TokenDto validate(String token) {
-       if (!jwtProvider.validate(token))
-            return null;
-        String username = jwtProvider.getUserNameFromToken(token);
-        if (!authRepository.findByUserName(username).isPresent())
-            return null;
+        // 1. Validar el token JWT
+        if (!jwtProvider.validate(token)) {
+            return null; // Token inválido
+        }
 
-        return new TokenDto(token);
+        // 2. Obtener el nombre de usuario del token
+        String username = jwtProvider.getUserNameFromToken(token);
+
+        // 3. Buscar el usuario en la base de datos
+        Optional<AuthUser> authUserOptional = authRepository.findByUserName(username);
+
+        if (!authUserOptional.isPresent()) {
+            return null; // Usuario no encontrado en la base de datos
+        }
+
+        AuthUser authUser = authUserOptional.get();
+
+        // 4. Obtener el rol del usuario (asumiendo que AuthUser tiene un campo 'role' de tipo UserRole enum)
+        // Y convertirlo a String para el DTO
+        String userRole = authUser.getRole().name();
+
+        // 5. Construir y devolver el TokenDto con la información requerida
+        return new TokenDto(token, username, userRole);
     }
 
     @Override
