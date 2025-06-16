@@ -27,5 +27,7 @@ eureka:
   instance:
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
     hostname: localhost
+    non-secure-port: ${server.port} # Esto le dice a Eureka qué puerto usar para el registro
+    prefer-ip-address: true # Sigue siendo una buena práctica
 jwt:
   secret: secret
