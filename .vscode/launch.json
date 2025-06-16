@@ -42,6 +42,16 @@
             "projectName": "auth-service",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-MsLugaresApplication<ms-lugares>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.example.mslugares.MsLugaresApplication",
+            "projectName": "ms-lugares",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }
