@@ -19,7 +19,7 @@
         La última versión estable es 2023.0.3 (a la fecha de esta respuesta)
         Ver: https://spring.io/projects/spring-cloud
         -->
-        <spring-cloud.version>2023.0.2</spring-cloud.version>
+        <spring-cloud.version>2023.0.1</spring-cloud.version>
     </properties>
     <dependencies>
         <dependency>

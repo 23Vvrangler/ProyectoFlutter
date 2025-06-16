@@ -10,6 +10,8 @@ springdoc:
 spring:
   application:
     name: ms-auth-service
+  config:
+    import: optional:configserver:http://root:123456@localhost:7070
   jpa:
     hibernate.ddl-auto: update
     generate-ddl: true
@@ -26,8 +28,7 @@ eureka:
     serviceUrl:
       defaultZone: ${EUREKA_URI:http://localhost:8090/eureka}
   instance:
-    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
-    hostname: localhost
+    instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${eureka.instance.nonSecurePort}
     non-secure-port: ${server.port} # Esto le dice a Eureka qué puerto usar para el registro
     prefer-ip-address: true # Sigue siendo una buena práctica
 jwt:
