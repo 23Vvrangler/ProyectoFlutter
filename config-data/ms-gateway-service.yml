@@ -31,3 +31,7 @@ spring:
           uri: lb://ms-auth-service
           predicates:
             - Path=/auth/**
+        - id: ms-lugar-service
+          uri: lb://ms-lugar-service
+          predicates:
+            - Path=/categorias-lugar/**
