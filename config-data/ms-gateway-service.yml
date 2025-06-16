@@ -5,24 +5,12 @@ server:
 eureka:
   client:
     serviceUrl:
-      #defaultZone: http://localhost:8090/eureka
       defaultZone: ${EUREKA_URI:http://localhost:8090/eureka}
   instance:
-    #hostname: localhost
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
 spring:
   cloud:
     gateway:
-      # globalcors:
-      #   corsConfigurations:
-      #     '[/**]':
-      #       allowedOrigins: "http://localhost:5173"
-      #       allowedHeaders: "*"
-      #       allowedMethods:
-      #         - GET
-      #         - POST
-      #         - PUT
-      #         - DELETE
       discovery:
         locator:
           enable: true
@@ -30,6 +18,10 @@ spring:
         - id: ms-auth-service
           uri: lb://ms-auth-service
           predicates:
-            - Path=/auth/**,/user-profile/**,/role/**
+            - Path=/auth/**, /user-profile/**, /role/**
+
+
+
+        
           # filters:
           #   - AuthFilter
