@@ -1,5 +1,4 @@
 server:
-
   port: ${PORT:${SERVERS_PORT:0}}
 springdoc:
   api-docs:
@@ -9,6 +8,8 @@ springdoc:
     path: /doc/swagger-ui.html
 
 spring:
+  application:
+    name: ms-auth-service
   jpa:
     hibernate.ddl-auto: update
     generate-ddl: true
