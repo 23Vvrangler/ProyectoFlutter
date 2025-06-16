@@ -34,4 +34,4 @@ spring:
         - id: ms-lugar-service
           uri: lb://ms-lugar-service
           predicates:
-            - Path=/categorias-lugar/**
+            - Path=/categorias-lugar/**, /lugares/**
