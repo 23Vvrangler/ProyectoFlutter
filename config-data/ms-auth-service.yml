@@ -10,9 +10,9 @@ spring:
     show-sql: true
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/gt-auth
+    url: jdbc:mysql://localhost:3306/auth-cp
     username: root
-    password:
+    password: Sasha24!
 
 
 eureka:
