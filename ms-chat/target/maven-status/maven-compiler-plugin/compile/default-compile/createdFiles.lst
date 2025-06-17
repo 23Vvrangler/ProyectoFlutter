@@ -1,0 +1,8 @@
+com/example/ms_chat/service/ChatMessageService.class
+com/example/ms_chat/entity/ChatMessage.class
+com/example/ms_chat/service/impl/ChatMessageServiceImpl.class
+com/example/ms_chat/repository/ChatMessageRepository.class
+com/example/ms_chat/entity/ChatMessage$MessageType.class
+com/example/ms_chat/MsChatApplication.class
+com/example/ms_chat/controller/ChatWebSocketController.class
+com/example/ms_chat/config/WebSocketConfig.class

@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: ms-message-service
+  profiles:
+    active: development
+  config:
+    import: optional:configserver:http://root:123456@localhost:7070
+
+# --- Configuración de Logging ---
+logging:
+  level:
+    org.springframework.web.socket: TRACE
+    org.springframework.messaging: TRACE

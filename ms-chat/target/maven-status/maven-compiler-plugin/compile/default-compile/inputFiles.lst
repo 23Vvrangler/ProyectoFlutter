@@ -1,0 +1,7 @@
+/home/devrooster/Dev/ProyectoFlutter/ms-chat/src/main/java/com/example/ms_chat/entity/ChatMessage.java
+/home/devrooster/Dev/ProyectoFlutter/ms-chat/src/main/java/com/example/ms_chat/service/ChatMessageService.java
+/home/devrooster/Dev/ProyectoFlutter/ms-chat/src/main/java/com/example/ms_chat/repository/ChatMessageRepository.java
+/home/devrooster/Dev/ProyectoFlutter/ms-chat/src/main/java/com/example/ms_chat/service/impl/ChatMessageServiceImpl.java
+/home/devrooster/Dev/ProyectoFlutter/ms-chat/src/main/java/com/example/ms_chat/MsChatApplication.java
+/home/devrooster/Dev/ProyectoFlutter/ms-chat/src/main/java/com/example/ms_chat/config/WebSocketConfig.java
+/home/devrooster/Dev/ProyectoFlutter/ms-chat/src/main/java/com/example/ms_chat/controller/ChatWebSocketController.java

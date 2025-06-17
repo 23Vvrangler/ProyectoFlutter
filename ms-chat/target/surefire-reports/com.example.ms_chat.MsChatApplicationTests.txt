@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.example.ms_chat.MsChatApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 21.47 s -- in com.example.ms_chat.MsChatApplicationTests
