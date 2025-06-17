@@ -35,3 +35,7 @@ spring:
           uri: lb://ms-lugar-service
           predicates:
             - Path=/categorias-lugar/**, /lugares/**
+        - id: ms-reserva-service
+          uri: lb://ms-reserva-service
+          predicates:
+            - Path=/reservas/**
