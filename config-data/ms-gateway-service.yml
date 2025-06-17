@@ -39,3 +39,15 @@ spring:
           uri: lb://ms-reserva-service
           predicates:
             - Path=/reservas/**
+        - id: ms-message-service # Un ID único para esta ruta
+          uri: lb://ms-message-service # El nombre de servicio que ms-message-service registra en Eureka
+          predicates:
+            - Path=/chat/** # Rutas REST para APIs del chat (ej. /chat/history, /chat/users)
+            # Predicate para el endpoint WebSocket
+            # Es crucial que el Gateway rutee el WebSocket handshake.
+            # El Path debe coincidir con el endpoint que definiste en WebSocketConfig.java (registry.addEndpoint("/ws"))
+            - Path=/ws/** # Para el endpoint WebSocket principal (ws://gateway-url/ws)
+          # Opcional: Si necesitas manejar CORS específicamente para esta ruta
+          # filters:
+          #   - RewritePath=/websocket/(?<remaining>.*), /ws/${remaining} # Ejemplo si el cliente llama /websocket en vez de /ws
+          #   - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials, RETAIN
