@@ -11,14 +11,17 @@ import org.springframework.lang.NonNull; // ¡Importar esta anotación!
 @EnableWebSocketMessageBroker
 public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     @Override
-    public void registerStompEndpoints(@NonNull StompEndpointRegistry registry) { // Añadir @NonNull
-        registry.addEndpoint("/ws").withSockJS();
+    public void registerStompEndpoints(@NonNull StompEndpointRegistry registry) {
+        registry.addEndpoint("/ws")
+                .setAllowedOrigins("*"); // Esto permite cualquier origen. ¡Ten cuidado en producción!
+                // Para producción, se recomienda especificar orígenes concretos:
+                // .setAllowedOrigins("http://localhost:8080", "http://your-flutter-app-domain.com");
     }
 
     @Override
-    public void configureMessageBroker(@NonNull MessageBrokerRegistry config) { // Añadir @NonNull
+    public void configureMessageBroker(@NonNull MessageBrokerRegistry config) {
         config.enableSimpleBroker("/topic", "/queue");
         config.setApplicationDestinationPrefixes("/app");
         config.setUserDestinationPrefix("/user");
-    }  
+    }
 }

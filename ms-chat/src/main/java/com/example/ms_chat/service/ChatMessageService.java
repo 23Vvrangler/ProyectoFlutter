@@ -8,6 +8,6 @@ import com.example.ms_chat.entity.ChatMessage;
 
 @Service
 public interface ChatMessageService {
-    ChatMessage saveMessage(ChatMessage chatMessage);
-    List<ChatMessage> getChatHistory(String user1Id, String user2Id);
+    ChatMessage saveMessage(ChatMessage chatMessage); // Asegúrate de que es saveMessage
+    List<ChatMessage> findChatMessages(String senderId, String recipientId);
 }
