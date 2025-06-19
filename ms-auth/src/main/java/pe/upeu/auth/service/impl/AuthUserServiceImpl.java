@@ -3,7 +3,7 @@ package pe.upeu.auth.service.impl;
 import pe.upeu.auth.dto.AuthUserDto;
 
 import pe.upeu.auth.entity.AuthUser;
-
+import pe.upeu.auth.entity.AuthUser.UserRole;
 import pe.upeu.auth.entity.TokenDto;
 import pe.upeu.auth.repository.AuthRepository;
 import pe.upeu.auth.security.JwtProvider;
@@ -32,7 +32,15 @@ public class AuthUserServiceImpl implements AuthUserService {
         String password = passwordEncoder.encode(authUserDto.getPassword());
         AuthUser authUser = AuthUser.builder()
                 .userName(authUserDto.getUserName())
-                .password(password)
+                .password(password) // Contraseña ya codificada 
+                .email(authUserDto.getEmail())// Asumiendo que el DTO tiene un campo 'role' de tipo String
+                .firstName(authUserDto.getFirstName())
+                .lastName(authUserDto.getLastName())
+                .phoneNumber(authUserDto.getPhoneNumber())
+                .address(authUserDto.getAddress())
+                .dateOfBirth(authUserDto.getDateOfBirth())
+                .role(null == authUserDto.getRole() ? UserRole.USER : authUserDto.getRole()) // Asignar rol, por defecto USER si es null
+                .profilePictureUrl(authUserDto.getProfilePictureUrl())
                 .build();
 
         return authRepository.save(authUser);
